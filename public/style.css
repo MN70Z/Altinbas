@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; 
+}
+
+#accountsTable {
+    width: 100%; 
+    border-collapse: collapse;
+    margin: 20px 0; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#accountsTable th, #accountsTable td {
+    text-align: left; 
+    padding: 12px 20px; 
+    border-bottom: 1px solid #ccc; 
+}
+
+#accountsTable th {
+    background-color: #f4f4f4;
+    color: #333; 
+}
+
+#accountsTable tr:nth-child(even) {
+    background-color: #fafafa; 
+}
+
+#accountsTable tr:hover {
+    background-color: #f1f1f1; 
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #004494; 
+}
+
+#accountForm {
+    max-width: 500px; 
+    margin: 20px auto; 
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+#accountForm label {
+    display: block; 
+    margin-top: 20px; 
+    font-weight: bold; 
+}
+
+#accountForm input[type="text"] {
+    width: calc(100% - 22px); 
+    padding: 10px; 
+    margin-top: 5px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+}
+
+#formButton {
+    width: 100%; 
+    padding: 10px;
+    margin-top: 20px; 
+    background-color: #4CAF50; 
+    color: white; 
+    border: none;
+    border-radius: 4px; 
+    cursor: pointer; 
+}
+
+#formButton:hover {
+    background-color: #45a049; 
+}
+
+@media (max-width: 600px) {
+    #accountForm {
+        width: 90%; 
+        margin: 20px auto;
+    }
+}
