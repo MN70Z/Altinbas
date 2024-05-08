@@ -54,8 +54,7 @@ function addAccountToList(account) {
         cell.textContent = value instanceof Object ? value.name : value; // Handle nested objects if any
     });
     const deleteCell = row.insertCell();
-    deleteCell.innerHTML = '<button onclick="deleteAccount(this)">Delete</button>';
-}
+    deleteCell.innerHTML = '<button onclick="deleteAccount(this)">Delete</button><button onclick="editAccount(this)">Edit</button>';}
 
 function editAccount(button) {
     const row = button.parentNode.parentNode;
