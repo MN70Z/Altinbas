@@ -9,6 +9,14 @@
   <body>
     <h1>Altinbas Bank Account Management</h1>
     <form id="accountForm">
+      <label for="accountId">Account ID:</label>
+      <input
+        type="text"
+        id="accountId"
+        name="accountId"
+        disabled
+        required
+      /><br />
       <label for="accountNumber">Account Number:</label>
       <input
         type="text"
@@ -30,6 +38,7 @@
     <table id="accountsTable">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Account Number</th>
           <th>Name</th>
           <th>Address</th>

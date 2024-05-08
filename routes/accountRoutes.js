@@ -23,31 +23,28 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.put("/:accountNumber", async (req, res) => {
+router.put("/:id", async (req, res) => {
     try {
-        const updatedAccount = await Account.findOneAndUpdate(
-            { accountNumber: req.params.accountNumber },
-            req.body,
-            { new: true, runValidators: true }
-        );
-        if (!updatedAccount) {
-            return res.status(404).send();
-        }
-        res.send(updatedAccount);
+      const updatedAccount = await Account.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      if (!updatedAccount) {
+        return res.status(404).send({ message: "Account not found" });
+      }
+      res.send(updatedAccount);
     } catch (error) {
-        res.status(400).send(error);
+      console.error("Update error:", error);
+      res.status(500).send({ message: "Internal server error" });
     }
-});
-
+  });
+  
 router.delete("/:id", async (req, res) => {
     try {
         const deletedAccount = await Account.findByIdAndDelete(req.params.id);
         if (!deletedAccount) {
-            return res.status(404).send();  // No account found to delete
+            return res.status(404).send();  
         }
-        res.status(204).send();  // Successfully deleted the account
+        res.status(204).send();  
     } catch (error) {
-        res.status(500).send(error);  // Internal server error
+        res.status(500).send(error);
     }
 });
 
