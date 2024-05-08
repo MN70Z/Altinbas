@@ -27,12 +27,20 @@ function createAccount() {
         },
         body: JSON.stringify(accountData),
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.statusText);
+        }
+        return response.json();
+    })
     .then(account => {
         addAccountToList(account);
         resetForm();
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to create account: ' + error.message);
+    });
 }
 
 function loadAccounts() {

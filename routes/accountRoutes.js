@@ -3,11 +3,13 @@ const router = express.Router();
 const Account = require('../models/account');
 
 router.post("/", async (req, res) => {
+    console.log(req.body);  // Log the incoming request body
     try {
         const newAccount = new Account(req.body);
         await newAccount.save();
         res.status(201).send(newAccount);
     } catch (error) {
+        console.error(error);  // Log any errors
         res.status(400).send(error);
     }
 });
@@ -24,7 +26,7 @@ router.get("/", async (req, res) => {
 router.put("/:accountNumber", async (req, res) => {
     try {
         const updatedAccount = await Account.findOneAndUpdate(
-            { accountNumber: req.params.accountNumber }, 
+            { accountNumber: req.params.accountNumber },
             req.body,
             { new: true, runValidators: true }
         );
@@ -37,15 +39,15 @@ router.put("/:accountNumber", async (req, res) => {
     }
 });
 
-router.delete("/:accountNumber", async (req, res) => {
+router.delete("/:id", async (req, res) => {
     try {
-        const deletedAccount = await Account.findOneAndDelete({ accountNumber: req.params.accountNumber });
+        const deletedAccount = await Account.findByIdAndDelete(req.params.id);
         if (!deletedAccount) {
-            return res.status(404).send();
+            return res.status(404).send();  // No account found to delete
         }
-        res.status(204).send(deletedAccount);
+        res.status(204).send();  // Successfully deleted the account
     } catch (error) {
-        res.status(500).send(error);
+        res.status(500).send(error);  // Internal server error
     }
 });
 
