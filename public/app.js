@@ -75,7 +75,7 @@ function addAccountToList(account) {
 
 function editAccount(button) {
   const row = button.parentNode.parentNode;
-  document.getElementById("accountId").value = row.cells[0].textContent; 
+  document.getElementById("accountId").value = row.cells[0].textContent; // Assume _id is in the first column
   document.getElementById("accountNumber").value = row.cells[1].textContent;
   document.getElementById("name").value = row.cells[2].textContent;
   document.getElementById("address").value = row.cells[3].textContent;
@@ -83,7 +83,6 @@ function editAccount(button) {
   document.getElementById("balance").value = row.cells[5].textContent;
 
   document.getElementById("formButton").textContent = "Save Changes";
-  document.getElementById("accountId").disabled = false;
 }
 
 function saveChanges() {
